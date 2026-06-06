@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable no-unused-vars */
 import React, {
     useEffect,
@@ -70,9 +71,6 @@ const Products = () => {
 
     }, []);
 
-    // ==========================
-    // Filter Products
-    // ==========================
     const filteredProducts =
         products.filter((product) =>
             product.name
@@ -83,111 +81,72 @@ const Products = () => {
         );
 
     return (
-        <div className="bg-[#0F172A] min-h-screen text-white pt-28">
-
+        <div className="bg-[#0F172A] min-h-screen text-white pt-10">
             {/* Hero */}
             <section className="max-w-7xl mx-auto px-5 lg:px-10 py-16">
-
                 <div className="text-center">
-
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
-
+                    <h1 className="text-4xl sm:text-5xl lg:text-4xl font-bold">
                         Our Premium
                         <span className="text-[#D4AF37]">
                             {" "}Products
                         </span>
-
                     </h1>
-
-                    <p className="text-gray-400 mt-5 text-lg max-w-3xl mx-auto leading-relaxed">
-
+                    <p className="text-gray-400 mt-5 text-md max-w-3xl mx-auto leading-relaxed">
                         Explore our premium collection of modern safes,
                         digital lockers, office vaults, and advanced
                         security solutions.
-
                     </p>
-
                 </div>
-
                 {/* Search */}
-                <div className="max-w-2xl mx-auto mt-12">
-
+                <div className="max-w-2xl mx-auto mt-5">
                     <div className="relative">
-
                         <input
                             type="text"
                             placeholder="Search products..."
-
                             value={search}
-
                             onChange={(e) =>
                                 setSearch(e.target.value)
                             }
-
                             className="w-full bg-[#111827] border border-[#D4AF37]/10 focus:border-[#D4AF37] outline-none px-6 py-4 rounded-full text-white pl-14"
                         />
-
                         <FaSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-[#D4AF37]" />
-
                     </div>
 
                 </div>
-
                 {/* Loading */}
                 {
                     loading ? (
-
                         <div className="flex items-center justify-center py-32">
-
                             <div className="w-14 h-14 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
-
                         </div>
-
                     ) : (
-
                         <>
                             {/* Products Grid */}
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-16">
                                 {
                                     filteredProducts.length > 0 ? (
-
                                         filteredProducts.map((product) => (
-
                                             <ProductCard
                                                 key={product._id}
                                                 product={product}
                                             />
-
                                         ))
-
                                     ) : (
-
                                         <div className="col-span-full text-center py-20">
-
                                             <h2 className="text-3xl font-bold text-white">
-
                                                 No Products Found
-
                                             </h2>
-
                                             <p className="text-gray-400 mt-4">
-
                                                 Try searching with another keyword.
-
                                             </p>
-
                                         </div>
                                     )
                                 }
-
                             </div>
                         </>
                     )
                 }
-
             </section>
-
         </div>
     );
 };

@@ -4,7 +4,7 @@ import { FaShieldAlt } from "react-icons/fa";
 
 const HeroSection = () => {
     return (
-        <section className="bg-[#0F172A] py-20 px-6 lg:px-20 overflow-hidden">
+        <section className="bg-[#0F172A] py-25 px-6 lg:px-10 overflow-hidden">
             <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
                 {/* Left Content */}
@@ -16,7 +16,7 @@ const HeroSection = () => {
                         </span>
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
                         Premium
                         <span className="text-[#D4AF37]"> Titanium </span>
                         Safes & Vaults

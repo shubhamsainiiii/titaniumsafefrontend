@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useEffect, useState } from "react";
+import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -33,6 +34,17 @@ const App = () => {
 
       {/* Scroll Top */}
       <ScrollToTop />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "#111827",
+            color: "#fff",
+            border: "1px solid #D4AF37",
+          },
+        }}
+      />
 
       <div className="bg-[#0F172A] min-h-screen overflow-hidden">
 

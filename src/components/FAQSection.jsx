@@ -78,7 +78,7 @@ const FAQSection = () => {
                             <motion.div
                                 key={index}
                                 layout
-                                className={`bg-[#0F172A] border rounded-3xl overflow-hidden transition-all duration-300 ${isOpen
+                                className={`bg-[#0F172A] border rounded-3xl overflow-hidden transition-all duration-300  ${isOpen
                                         ? "border-[#D4AF37]"
                                         : "border-[#D4AF37]/10"
                                     }`}
@@ -87,7 +87,7 @@ const FAQSection = () => {
                                 {/* Question */}
                                 <button
                                     onClick={() => toggleFAQ(index)}
-                                    className="w-full flex items-center justify-between gap-5 text-left p-8"
+                                    className="w-full flex items-center justify-between gap-5 text-left p-8 cursor-pointer"
                                 >
 
                                     <h3 className="text-lg sm:text-xl font-semibold text-white">
@@ -128,7 +128,7 @@ const FAQSection = () => {
 
                                             <div className="px-8 pb-8">
 
-                                                <p className="text-gray-400 leading-relaxed">
+                                                <p className="text-gray-400 leading-relaxed cursor-pointer">
                                                     {faq.a}
                                                 </p>
 

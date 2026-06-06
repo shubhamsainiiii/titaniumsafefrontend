@@ -6,9 +6,11 @@ import {
     FaEnvelope,
     FaWhatsapp,
 } from "react-icons/fa";
+import api from "../services/api";
+import toast from "react-hot-toast";
 
 const Contact = () => {
-
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -23,19 +25,45 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+
         e.preventDefault();
 
-        console.log(formData);
+        try {
 
-        alert("Message Sent Successfully!");
+            setLoading(true);
 
-        setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            message: "",
-        });
+            const { data } =
+                await api.post(
+                    "/contact/create",
+                    formData
+                );
+
+            toast.success(
+                data.message
+            );
+
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
+            });
+
+        } catch (error) {
+
+            console.log(error);
+
+            toast.error(
+                error.response?.data?.message ||
+                "Failed To Send Message"
+            );
+
+        } finally {
+
+            setLoading(false);
+
+        }
     };
 
     return (
@@ -237,9 +265,12 @@ const Contact = () => {
                             {/* Button */}
                             <button
                                 type="submit"
-                                className="w-full bg-[#D4AF37] text-[#0F172A] py-4 rounded-2xl font-semibold hover:scale-[1.02] transition-all duration-300"
+                                disabled={loading}
+                                className="w-full bg-[#D4AF37] text-[#0F172A] py-4 rounded-2xl font-semibold hover:scale-[1.02] transition-all duration-300 disabled:opacity-60"
                             >
-                                Send Message
+                                {loading
+                                    ? "Sending..."
+                                    : "Send Message"}
                             </button>
 
                         </form>

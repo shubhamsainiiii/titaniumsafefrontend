@@ -54,7 +54,7 @@ const IndustriesSection = () => {
     ];
 
     return (
-        <section className="py-24 bg-[#0F172A] overflow-hidden">
+        <section className="py-20 bg-[#0F172A] overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10">
 

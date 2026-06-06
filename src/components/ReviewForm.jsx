@@ -6,11 +6,14 @@ import {
     FaStar,
     FaUser,
 } from "react-icons/fa";
+import api from "../services/api";
+import toast from "react-hot-toast";
 
 import { motion } from "framer-motion";
 
-const ReviewForm = ({ productId }) => {
-
+const ReviewForm = ({ productId,
+    onReviewSubmit, }) => {
+    const [loading, setLoading] = useState(false);
     const [rating, setRating] = useState(0);
 
     const [hover, setHover] = useState(0);
@@ -31,27 +34,64 @@ const ReviewForm = ({ productId }) => {
     };
 
     // Submit Review
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
 
         e.preventDefault();
 
-        const reviewData = {
-            productId,
-            ...formData,
-            rating,
-        };
+        if (rating === 0) {
+            toast.error(
+                "Please select a rating"
+            );
+            return;
+        }
 
-        console.log(reviewData);
+        try {
 
-        alert("Review Submitted Successfully!");
+            setLoading(true);
 
-        // Reset
-        setFormData({
-            userName: "",
-            review: "",
-        });
+            const { data } =
+                await api.post(
+                    "/reviews/create",
+                    {
+                        productId,
+                        userName:
+                            formData.userName,
+                        review:
+                            formData.review,
+                        rating,
+                    }
+                );
 
-        setRating(0);
+            toast.success(
+                data.message
+            );
+
+            setFormData({
+                userName: "",
+                review: "",
+            });
+
+            setRating(0);
+
+            if (onReviewSubmit) {
+                onReviewSubmit();
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+            toast.error(
+                error.response?.data
+                    ?.message ||
+                "Failed To Submit Review"
+            );
+
+        } finally {
+
+            setLoading(false);
+
+        }
     };
 
     return (
@@ -59,7 +99,7 @@ const ReviewForm = ({ productId }) => {
             initial={{ opacity: 0, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="bg-[#111827] border border-[#D4AF37]/10 rounded-3xl p-8 shadow-2xl"
+            className="rounded-3xl"
         >
 
             {/* Heading */}
@@ -172,9 +212,12 @@ const ReviewForm = ({ productId }) => {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.95 }}
                     type="submit"
-                    className="w-full bg-[#D4AF37] text-[#0F172A] py-4 rounded-2xl font-semibold text-lg cursor-pointer"
+                    disabled={loading}
+                    className="w-full bg-[#D4AF37] text-[#0F172A] py-4 rounded-2xl font-semibold text-lg cursor-pointer disabled:opacity-60"
                 >
-                    Submit Review
+                    {loading
+                        ? "Submitting..."
+                        : "Submit Review"}
                 </motion.button>
 
             </form>
