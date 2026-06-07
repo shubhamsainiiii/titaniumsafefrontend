@@ -137,7 +137,7 @@ const Contact = () => {
                         {/* Form header */}
                         <div className="mb-7">
                             <h2 className="text-2xl font-bold text-[#0f1623]">Send a Message</h2>
-                            <p className="text-[#9ca3af] text-sm mt-1">
+                            <p className="text-[#5c616b] text-sm mt-1">
                                 We'll get back to you within 24 hours.
                             </p>
                         </div>
