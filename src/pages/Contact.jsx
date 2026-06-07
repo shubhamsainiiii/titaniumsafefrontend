@@ -107,7 +107,7 @@ const Contact = () => {
                                         <Icon className="text-lg" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-xs font-semibold uppercase tracking-widest text-[#9ca3af] mb-0.5">
+                                        <p className="text-xs font-semibold uppercase tracking-widest text-[#5c616b] mb-0.5">
                                             {label}
                                         </p>
                                         {href ? (

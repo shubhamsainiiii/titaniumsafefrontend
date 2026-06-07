@@ -4,7 +4,7 @@ import { FaShieldAlt } from "react-icons/fa";
 
 const HeroSection = () => {
     return (
-        <section className="bg-[#0F172A] py-25 px-6 lg:px-10 overflow-hidden">
+        <section className="bg-[#f8f6f0]  py-25 px-6 lg:px-10 overflow-hidden">
             <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
                 {/* Left Content */}
@@ -16,13 +16,13 @@ const HeroSection = () => {
                         </span>
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-[#1a1a2e]">
                         Premium
                         <span className="text-[#D4AF37]"> Titanium </span>
                         Safes & Vaults
                     </h1>
 
-                    <p className="text-gray-300 mt-6 text-lg leading-relaxed max-w-xl">
+                    <p className="text-[#4a5568] mt-6 text-lg leading-relaxed max-w-xl">
                         Protect your valuables with high-quality premium safes.
                         Strong security, elegant design, and trusted durability for
                         homes, offices, and businesses.
