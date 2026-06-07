@@ -27,7 +27,7 @@ const contactItems = [
         icon: FaPhoneAlt,
         label: "Phone Number",
         value: "+91 9999999999",
-        href: "tel:+919999999999",
+        href: "tel:+917727922769",
         color: "bg-blue-50 border-blue-100 text-blue-500",
     },
     {
@@ -41,7 +41,7 @@ const contactItems = [
         icon: FaWhatsapp,
         label: "WhatsApp",
         value: "Chat on WhatsApp",
-        href: "https://wa.me/919999999999",
+        href: "https://wa.me/917727922769",
         color: "bg-green-50 border-green-100 text-green-500",
     },
 ];

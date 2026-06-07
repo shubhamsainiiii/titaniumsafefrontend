@@ -30,6 +30,33 @@ const SpecTile = ({ label, value }) => (
     </div>
 );
 
+
+// Special Features — bullet list
+const SpecialFeatures = ({ value }) => {
+    if (!value) return null;
+
+    // Split by comma OR newline
+    const features = value
+        .split(/,|\n/)
+        .map((f) => f.trim())
+        .filter(Boolean);
+
+    return (
+        <div className="bg-[#f8f6f0] border border-[#e8e2d6] rounded-xl px-4 py-3 col-span-2">
+            <p className="text-[10px] text-[#9ca3af] uppercase tracking-widest mb-2">Special Features</p>
+            <ul className="space-y-1.5">
+                {features.map((feat, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0 mt-1.5" />
+                        <span className="text-[#0f1623] text-sm font-medium leading-snug">{feat}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+
 const Skeleton = () => (
     <div className="bg-[#f8f6f0] min-h-screen pt-28 animate-pulse">
         <div className="max-w-7xl mx-auto px-5 lg:px-10 py-16">
@@ -144,12 +171,12 @@ const ProductDetails = () => {
 
     const handleBuyNow = () => {
         const msg = `I want to buy this product: ${product.name}. Please share complete details.`;
-        window.open(`https://wa.me/919999999999?text=${encodeURIComponent(msg)}`, "_blank");
+        window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
     const handleKnowMore = () => {
         const msg = `I want to know more about this product: ${product.name}. Please share complete details.`;
-        window.open(`https://wa.me/919999999999?text=${encodeURIComponent(msg)}`, "_blank");
+        window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
     // Open full image in new tab
@@ -167,12 +194,12 @@ const ProductDetails = () => {
     );
 
     const specs = [
+        { label: "Name", value: product.brandName },
         { label: "Material", value: product.material },
         { label: "Colour", value: product.colour },
         { label: "Closure", value: product.closureType },
         { label: "Dimensions", value: product.productDimensions },
         { label: "Water Resistance", value: product.waterResistanceLevel },
-        { label: "Special Feature", value: product.specialFeature },
     ].filter((s) => s.value);
 
     return (
@@ -207,7 +234,7 @@ const ProductDetails = () => {
                                             e.stopPropagation();
                                             prevImage();
                                         }}
-                                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 border border-[#e8e2d6] flex items-center justify-center shadow-md hover:bg-[#D4AF37] hover:text-white transition-all duration-300"
+                                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 border border-[#e8e2d6] flex items-center justify-center shadow-md hover:bg-[#D4AF37] hover:text-white transition-all duration-300 cursor-pointer"
                                     >
                                         <FaChevronLeft />
                                     </button>
@@ -218,7 +245,7 @@ const ProductDetails = () => {
                                             e.stopPropagation();
                                             nextImage();
                                         }}
-                                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 border border-[#e8e2d6] flex items-center justify-center shadow-md hover:bg-[#D4AF37] hover:text-white transition-all duration-300"
+                                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 border border-[#e8e2d6] flex items-center justify-center shadow-md hover:bg-[#D4AF37] hover:text-white transition-all duration-300 cursor-pointer"
                                     >
                                         <FaChevronRight />
                                     </button>
@@ -244,7 +271,7 @@ const ProductDetails = () => {
                                         key={i} onClick={() => setSelectedImage(img)}
                                         className={`rounded-xl overflow-hidden border-2 transition-all duration-300 focus:outline-none bg-white ${selectedImage === img ? "border-[#D4AF37] shadow-md shadow-[#D4AF37]/20" : "border-[#e8e2d6] hover:border-[#D4AF37]/40"}`}
                                     >
-                                        <img src={img} alt={`thumb-${i}`} className="w-full h-20 object-contain p-1.5 bg-white" />
+                                        <img src={img} alt={`thumb-${i}`} className="w-full h-20 object-contain p-1.5 bg-white cursor-pointer" />
                                     </motion.button>
                                 ))}
                             </div>
@@ -259,13 +286,7 @@ const ProductDetails = () => {
                                 <FaShieldAlt className="text-[10px]" />{product.category}
                             </span>
                         )}
-
                         <h1 className="text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#0f1623]">{product.name}</h1>
-
-                        {product.brandName && (
-                            <p className="text-[#9ca3af] mt-2 text-sm">by <span className="text-[#4a5568] font-medium">{product.brandName}</span></p>
-                        )}
-
                         <div className="flex items-center gap-3 mt-5">
                             <div className="flex items-center gap-0.5"><Stars rating={parseFloat(avgRating)} /></div>
                             {avgRating > 0 ? (
@@ -284,6 +305,7 @@ const ProductDetails = () => {
                         {specs.length > 0 && (
                             <div className="mt-6 grid grid-cols-2 gap-2.5">
                                 {specs.map((s) => <SpecTile key={s.label} {...s} />)}
+                                <SpecialFeatures value={product.specialFeature} />
                             </div>
                         )}
 

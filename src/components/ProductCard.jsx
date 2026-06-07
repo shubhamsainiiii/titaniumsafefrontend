@@ -8,7 +8,7 @@ const ProductCard = ({ product }) => {
     const whatsappBuyNow = () => {
         const message = `I want to buy this product: ${product?.name}. Please share complete details.`;
         window.open(
-            `https://wa.me/917691888950?text=${encodeURIComponent(message)}`,
+            `https://wa.me/917727922769?text=${encodeURIComponent(message)}`,
             "_blank"
         );
     };

@@ -77,7 +77,7 @@ const Footer = () => {
                             {[
                                 { icon: FaFacebookF, href: "#" },
                                 { icon: FaInstagram, href: "#" },
-                                { icon: FaWhatsapp, href: "https://wa.me/919999999999" },
+                                { icon: FaWhatsapp, href: "https://wa.me/917727922769" },
                             ].map(({ icon: Icon, href }, i) => (
                                 <a
                                     key={i}

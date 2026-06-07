@@ -75,36 +75,13 @@ const Products = () => {
                         digital lockers, office vaults, and advanced security solutions.
                     </p>
                 </div>
-
-                {/* ── Search ── */}
-                <div className="max-w-xl mx-auto mb-8">
-                    <div className="relative">
-                        <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#B8941F] text-sm" />
-                        <input
-                            type="text"
-                            placeholder="Search products..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="w-full bg-white border border-[#e8e2d6] focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/10 outline-none px-5 py-3.5 pl-11 rounded-xl text-[#0f1623] text-sm placeholder:text-[#9ca3af] transition-all duration-200 shadow-sm"
-                        />
-                        {search && (
-                            <button
-                                onClick={() => setSearch("")}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9ca3af] hover:text-[#B8941F] transition-colors"
-                            >
-                                <FaTimes className="text-sm" />
-                            </button>
-                        )}
-                    </div>
-                </div>
-
                 {/* ── Category Filter ── */}
                 <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
                     {CATEGORIES.map((cat) => (
                         <button
                             key={cat}
                             onClick={() => setCategory(cat)}
-                            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 border ${category === cat
+                            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 border cursor-pointer ${category === cat
                                 ? "bg-[#D4AF37] text-[#0f1623] border-[#D4AF37] shadow-md shadow-[#D4AF37]/20"
                                 : "bg-white text-[#6b7280] border-[#e8e2d6] hover:border-[#D4AF37]/40 hover:text-[#B8941F]"
                                 }`}
