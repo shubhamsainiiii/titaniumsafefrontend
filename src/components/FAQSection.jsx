@@ -47,14 +47,14 @@ const FAQSection = () => {
     };
 
     return (
-        <section className="py-24 bg-[#111827]">
+        <section className="py-24 bg-[#f8f6f0]">
 
             <div className="max-w-5xl mx-auto px-5">
 
                 {/* Heading */}
                 <div className="text-center mb-16">
 
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-[#1a1a2e]">
                         Frequently Asked
                         <span className="text-[#D4AF37]">
                             {" "}Questions
@@ -78,9 +78,9 @@ const FAQSection = () => {
                             <motion.div
                                 key={index}
                                 layout
-                                className={`bg-[#0F172A] border rounded-3xl overflow-hidden transition-all duration-300  ${isOpen
+                                className={`bg-[#f8f6f0] border rounded-3xl overflow-hidden transition-all duration-300  ${isOpen
                                         ? "border-[#D4AF37]"
-                                        : "border-[#D4AF37]/10"
+                                        : "border-[#D4AF37]/40"
                                     }`}
                             >
 
@@ -90,7 +90,7 @@ const FAQSection = () => {
                                     className="w-full flex items-center justify-between gap-5 text-left p-8 cursor-pointer"
                                 >
 
-                                    <h3 className="text-lg sm:text-xl font-semibold text-white">
+                                    <h3 className="text-lg sm:text-xl font-semibold text-[#1a1a2e]">
                                         {faq.q}
                                     </h3>
 

@@ -44,7 +44,7 @@ const SecurityProcess = () => {
     ];
 
     return (
-        <section className="py-24 bg-[#111827] overflow-hidden">
+        <section className="py-24 bg-[#f8f6f0] overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10">
 
@@ -64,7 +64,7 @@ const SecurityProcess = () => {
                     className="text-center mb-20"
                 >
 
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-[#1a1a2e] leading-tight">
 
                         Our Security
                         <span className="text-[#D4AF37]">
@@ -101,14 +101,14 @@ const SecurityProcess = () => {
                             whileHover={{
                                 y: -10,
                             }}
-                            className="group relative bg-[#0F172A] border border-[#D4AF37]/10 rounded-3xl p-8 overflow-hidden hover:border-[#D4AF37]/40 transition-all duration-500"
+                            className="group relative bg-[#f8f6f0] border border-[#D4AF37]/40 rounded-3xl p-8 overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-500"
                         >
 
                             {/* Glow Effect */}
                             <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/10 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
                             {/* Step Number */}
-                            <div className="absolute top-6 right-6 text-5xl font-bold text-white/5">
+                            <div className="absolute top-6 right-6 text-5xl font-bold text-[#1a1a2e]/7">
 
                                 {step.id}
 
@@ -122,7 +122,7 @@ const SecurityProcess = () => {
                             </div>
 
                             {/* Title */}
-                            <h3 className="relative z-10 text-2xl font-bold text-white mb-4">
+                            <h3 className="relative z-10 text-2xl font-bold text-[#1a1a2e] mb-4">
 
                                 {step.title}
 

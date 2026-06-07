@@ -48,7 +48,7 @@ const ProductCategories = () => {
     ];
 
     return (
-        <section className="bg-[#0F172A] overflow-hidden">
+        <section className="bg-[#f8f6f0] overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10">
 
@@ -68,7 +68,7 @@ const ProductCategories = () => {
                     className="text-center mb-20"
                 >
 
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-[#1a1a2e] leading-tight">
 
                         Product
                         <span className="text-[#D4AF37]">

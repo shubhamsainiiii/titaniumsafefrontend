@@ -54,14 +54,14 @@ const IndustriesSection = () => {
     ];
 
     return (
-        <section className="py-20 bg-[#0F172A] overflow-hidden">
+        <section className="py-20 bg-[#f8f6f0] overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-5 lg:px-10">
 
                 {/* Heading */}
                 <div className="text-center mb-20">
 
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-[#1a1a2e] leading-tight">
 
                         Industries We
                         <span className="text-[#D4AF37]">
@@ -98,7 +98,7 @@ const IndustriesSection = () => {
                             whileHover={{
                                 y: -10,
                             }}
-                            className="group relative bg-[#111827] border border-[#D4AF37]/10 rounded-3xl p-8 overflow-hidden hover:border-[#D4AF37]/40 transition-all duration-500"
+                            className="group relative bg-[#f8f6f0] border border-[#D4AF37]/40 rounded-3xl p-8 overflow-hidden hover:border-[#D4AF37]/50 transition-all duration-500"
                         >
 
                             {/* Glow Effect */}
@@ -112,7 +112,7 @@ const IndustriesSection = () => {
                             </div>
 
                             {/* Title */}
-                            <h3 className="relative z-10 text-2xl font-bold text-white mb-4">
+                            <h3 className="relative z-10 text-2xl font-bold text-[#1a1a2e] mb-4">
 
                                 {item.title}
 
