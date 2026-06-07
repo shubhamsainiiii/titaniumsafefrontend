@@ -1,40 +1,70 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { FaStar, FaQuoteLeft } from "react-icons/fa";
+import { FaStar, FaRegStar, FaCheckCircle } from "react-icons/fa";
+
+const getInitials = (name = "") =>
+    name.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2);
+
+const avatarColors = [
+    { bg: "#FEF3C7", text: "#92400E" },
+    { bg: "#DBEAFE", text: "#1E40AF" },
+    { bg: "#D1FAE5", text: "#065F46" },
+    { bg: "#EDE9FE", text: "#5B21B6" },
+    { bg: "#FCE7F3", text: "#9D174D" },
+];
+
+const getColor = (name = "") =>
+    avatarColors[(name.charCodeAt(0) || 0) % avatarColors.length];
 
 const ReviewCard = ({ review }) => {
+    const color = getColor(review?.userName);
+    const rating = review?.rating || 5;
 
     return (
-        <div className="h-full bg-[#111827] border border-[#D4AF37]/10 rounded-3xl p-6 hover:border-[#D4AF37]/40 transition-all duration-300 shadow-xl">
+        <div className="h-full bg-white border border-[#e8e2d6] rounded-3xl p-6 hover:border-[#D4AF37]/50 hover:shadow-lg hover:shadow-[#D4AF37]/8 hover:-translate-y-1 transition-all duration-300">
 
-            {/* Quote Icon */}
-            <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mb-5">
-                <FaQuoteLeft className="text-[#D4AF37] text-xl" />
+            {/* Top row: avatar + name + verified */}
+            <div className="flex items-center gap-3 mb-5">
+                <div
+                    className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
+                    style={{ background: color.bg, color: color.text }}
+                >
+                    {getInitials(review?.userName)}
+                </div>
+                <div className="flex-1 min-w-0">
+                    <h3 className="text-[#0f1623] font-semibold text-sm truncate">
+                        {review?.userName}
+                    </h3>
+                    <div className="flex items-center gap-1 mt-0.5">
+                        <FaCheckCircle className="text-[#D4AF37] text-[10px]" />
+                        <p className="text-[#9ca3af] text-xs">Verified Customer</p>
+                    </div>
+                </div>
+                {/* Rating badge */}
+                <span className="flex items-center gap-1 bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#B8941F] text-xs font-bold px-2.5 py-1 rounded-lg flex-shrink-0">
+                    {rating}
+                    <FaStar className="text-[10px]" />
+                </span>
             </div>
 
-            {/* Review Text */}
-            <p className="text-gray-300 leading-relaxed text-[15px] mb-6">
-                {review?.review}
-            </p>
-
             {/* Stars */}
-            <div className="flex items-center gap-1 mb-5">
-                {[...Array(review?.rating || 5)].map((_, index) => (
-                    <FaStar
-                        key={index}
-                        className="text-[#D4AF37] text-sm"
-                    />
+            <div className="flex items-center gap-0.5 mb-4">
+                {[1, 2, 3, 4, 5].map((s) => (
+                    s <= rating
+                        ? <FaStar key={s} className="text-[#D4AF37] text-sm" />
+                        : <FaRegStar key={s} className="text-[#d1d5db] text-sm" />
                 ))}
             </div>
 
-            {/* User Info */}
-            <div className="border-t border-gray-700 pt-4">
-                <h3 className="text-white font-semibold text-lg">
-                    {review?.userName}
-                </h3>
+            {/* Review Text */}
+            <p className="text-[#4a5568] leading-relaxed text-sm line-clamp-4">
+                {review?.review}
+            </p>
 
-                <p className="text-gray-400 text-sm mt-1">
-                    Verified Customer
+            {/* Bottom divider */}
+            <div className="mt-5 pt-4 border-t border-[#f0ebe2]">
+                <p className="text-[#c8b98a] text-xs font-medium tracking-wide uppercase">
+                    TitaniumSafe Customer
                 </p>
             </div>
         </div>
