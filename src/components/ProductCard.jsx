@@ -56,10 +56,10 @@ const ProductCard = ({ product }) => {
                     {product?.name}
                 </h2>
 
-                {/* Description
+                {/* Description */}
                 <p className="text-[#9ca3af] text-xs leading-relaxed mb-4 line-clamp-2">
                     {product?.description}
-                </p> */}
+                </p>
 
                 {/* Stars */}
                 <div className="flex items-center gap-0.5 mb-4">
