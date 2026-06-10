@@ -11,15 +11,6 @@ const ProductCard = ({ product }) => {
         window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
-
-    // const whatsappBuyNow = () => {
-    //     const message = `I want to buy this product: ${product?.name}. Please share complete details.`;
-    //     window.open(
-    //         `https://wa.me/917727922769?text=${encodeURIComponent(message)}`,
-    //         "_blank"
-    //     );
-    // };
-
     const avg = product?.averageRating || 0;
 
     return (
@@ -65,10 +56,10 @@ const ProductCard = ({ product }) => {
                     {product?.name}
                 </h2>
 
-                {/* Description */}
+                {/* Description
                 <p className="text-[#9ca3af] text-xs leading-relaxed mb-4 line-clamp-2">
                     {product?.description}
-                </p>
+                </p> */}
 
                 {/* Stars */}
                 <div className="flex items-center gap-0.5 mb-4">
