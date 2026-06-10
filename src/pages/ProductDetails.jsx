@@ -23,19 +23,54 @@ const Stars = ({ rating, size = "text-sm" }) =>
         return <Icon key={s} className={`${size} ${rating >= s - 0.5 ? "text-[#D4AF37]" : "text-[#d1d5db]"}`} />;
     });
 
+// Spec tile with bullet point style
 const SpecTile = ({ label, value }) => (
     <div className="bg-[#f8f6f0] border border-[#e8e2d6] rounded-xl px-4 py-3">
-        <p className="text-[10px] text-[#9ca3af] uppercase tracking-widest mb-1">{label}</p>
-        <p className="text-[#0f1623] text-sm font-semibold truncate">{value}</p>
+        <p className="text-[10px] text-[#9ca3af] uppercase tracking-widest mb-2">{label}</p>
+        <div className="flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0 mt-1.5" />
+            <span className="text-[#0f1623] text-sm font-semibold leading-snug">{value}</span>
+        </div>
     </div>
 );
 
+// Description as bullet points
+const DescriptionBullets = ({ value }) => {
+    if (!value) return null;
+
+    const points = value
+        .split(/,|\n/)
+        .map((f) => f.trim())
+        .filter(Boolean);
+
+    if (points.length <= 1) {
+        // If no commas/newlines, just show as single bullet
+        return (
+            <ul className="space-y-1.5 mt-5">
+                <li className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0 mt-1.5" />
+                    <span className="text-[#4a5568] text-base leading-relaxed">{value}</span>
+                </li>
+            </ul>
+        );
+    }
+
+    return (
+        <ul className="space-y-2 mt-5">
+            {points.map((point, i) => (
+                <li key={i} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] flex-shrink-0 mt-1.5" />
+                    <span className="text-[#4a5568] text-base leading-relaxed">{point}</span>
+                </li>
+            ))}
+        </ul>
+    );
+};
 
 // Special Features — bullet list
 const SpecialFeatures = ({ value }) => {
     if (!value) return null;
 
-    // Split by comma OR newline
     const features = value
         .split(/,|\n/)
         .map((f) => f.trim())
@@ -170,12 +205,14 @@ const ProductDetails = () => {
     }, [id]);
 
     const handleBuyNow = () => {
-        const msg = `I want to buy this product: ${product.name}. Please share complete details.`;
+        const productLink = window.location.href;
+        const msg = `I want to buy this product: ${product.name}.\n\nProduct Link: ${productLink}\n\nPlease share complete details.`;
         window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
     const handleKnowMore = () => {
-        const msg = `I want to know more about this product: ${product.name}. Please share complete details.`;
+        const productLink = window.location.href;
+        const msg = `I want to know more about this product: ${product.name}.\n\nProduct Link: ${productLink}\n\nPlease share complete details.`;
         window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
@@ -197,9 +234,9 @@ const ProductDetails = () => {
         { label: "Name", value: product.brandName },
         { label: "Material", value: product.material },
         { label: "Colour", value: product.colour },
-        { label: "Closure", value: product.closureType },
+        { label: "Lock System", value: product.closureType },
         { label: "Dimensions", value: product.productDimensions },
-        { label: "Water Resistance", value: product.waterResistanceLevel },
+        { label: "Storage", value: product.waterResistanceLevel },
     ].filter((s) => s.value);
 
     return (
@@ -300,12 +337,18 @@ const ProductDetails = () => {
 
                         <span className="text-5xl font-bold text-[#D4AF37]">₹{product.price?.toLocaleString("en-IN")}</span>
 
-                        <p className="text-[#4a5568] leading-relaxed mt-5 text-base">{product.description}</p>
-
                         {specs.length > 0 && (
                             <div className="mt-6 grid grid-cols-2 gap-2.5">
                                 {specs.map((s) => <SpecTile key={s.label} {...s} />)}
                                 <SpecialFeatures value={product.specialFeature} />
+                            </div>
+                        )}
+
+                        {/* Description — sabse niche, bullet points mein */}
+                        {product.description && (
+                            <div className="mt-6 bg-[#f8f6f0] border border-[#e8e2d6] rounded-xl px-4 py-3">
+                                <p className="text-[10px] text-[#9ca3af] uppercase tracking-widest mb-1">Description</p>
+                                <DescriptionBullets value={product.description} />
                             </div>
                         )}
 
@@ -314,7 +357,7 @@ const ProductDetails = () => {
                         <div className="flex flex-col sm:flex-row gap-3">
                             <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={handleBuyNow}
                                 className="flex-1 bg-[#D4AF37] text-[#0f1623] py-4 rounded-2xl font-bold flex items-center justify-center gap-2.5 text-sm cursor-pointer hover:brightness-105 hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all duration-300">
-                                <FaWhatsapp className="text-base" />Buy Now on WhatsApp
+                                <FaWhatsapp className="text-base" />Buy Now
                             </motion.button>
                             <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={handleKnowMore}
                                 className="flex-1 bg-white border border-[#e8e2d6] text-[#4a5568] py-4 rounded-2xl font-semibold hover:border-[#D4AF37]/40 hover:text-[#B8941F] transition-all duration-300 text-sm cursor-pointer">
