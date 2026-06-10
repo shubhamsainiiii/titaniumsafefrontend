@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import {
     FaShieldAlt,
     FaLock,
@@ -7,9 +7,12 @@ import {
     FaAward,
     FaCheckCircle,
 } from "react-icons/fa";
+import about from "../assets/about.png";
 import CTASection from "../components/CTASection";
 
 const About = () => {
+    const [loaded, setLoaded] = useState(false);
+
     return (
         <div className="bg-[#f8f6f0] text-[#1a1a2e] min-h-screen pt-4">
 
@@ -77,18 +80,24 @@ const About = () => {
 
                     {/* Right Image */}
                     <div className="relative">
-                        <div className="absolute w-[320px] h-[320px] bg-[#D4AF37]/20 blur-3xl rounded-full top-10 left-10 pointer-events-none" />
-                        <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-[#D4AF37]/20">
+                        <div className="absolute w-[320px] h-90 bg-[#D4AF37]/20 blur-3xl rounded-full top-10 left-10 pointer-events-none" />
+
+                        <div className="relative z-10">
+
+                            {!loaded && (
+                                <div className="absolute inset-0 rounded-3xl bg-gray-200 animate-pulse z-0" />
+                            )}
+
                             <img
-                                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
-                                alt="About TitaniumSafe"
-                                className="w-full object-cover"
+                                src={about}
+                                alt="Titanium Safe"
+                                loading="lazy"
+                                onLoad={() => setLoaded(true)}
+                                className={`w-full rounded-3xl shadow-2xl object-cover transition-all duration-1000 ${loaded
+                                    ? "opacity-100 blur-0 scale-100"
+                                    : "opacity-0 blur-xl scale-105"
+                                    }`}
                             />
-                            {/* Subtle overlay badge */}
-                            <div className="absolute bottom-5 left-5 bg-white/90 backdrop-blur-sm border border-[#D4AF37]/30 rounded-2xl px-4 py-3 shadow-lg">
-                                <p className="text-[#0f1623] font-bold text-sm">TitaniumSafe</p>
-                                <p className="text-[#718096] text-xs mt-0.5">Premium Security Vaults</p>
-                            </div>
                         </div>
                     </div>
                 </div>

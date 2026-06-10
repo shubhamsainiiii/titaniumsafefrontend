@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { FaShieldAlt } from "react-icons/fa";
+import about from "../assets/about.png";
 
 const HeroSection = () => {
+    const [loaded, setLoaded] = useState(false);
+
     return (
-        <section className="bg-[#f8f6f0]  py-25 px-6 lg:px-10 overflow-hidden">
+        <section className="bg-[#f8f6f0] py-25 px-6 lg:px-10 overflow-hidden">
             <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
                 {/* Left Content */}
@@ -24,8 +27,8 @@ const HeroSection = () => {
 
                     <p className="text-[#4a5568] mt-6 text-lg leading-relaxed max-w-xl">
                         Protect your valuables with high-quality premium safes.
-                        Strong security, elegant design, and trusted durability for
-                        homes, offices, and businesses.
+                        Strong security, elegant design, and trusted durability
+                        for homes, offices, and businesses.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-5 mt-10">
@@ -49,32 +52,59 @@ const HeroSection = () => {
                     {/* Stats */}
                     <div className="grid grid-cols-3 gap-6 mt-14">
                         <div>
-                            <h2 className="text-3xl font-bold text-[#D4AF37]">500+</h2>
-                            <p className="text-gray-400 mt-1">Happy Clients</p>
+                            <h2 className="text-3xl font-bold text-[#D4AF37]">
+                                500+
+                            </h2>
+                            <p className="text-gray-500 mt-1">
+                                Happy Clients
+                            </p>
                         </div>
 
                         <div>
-                            <h2 className="text-3xl font-bold text-[#D4AF37]">10+</h2>
-                            <p className="text-gray-400 mt-1">Years Experience</p>
+                            <h2 className="text-3xl font-bold text-[#D4AF37]">
+                                10+
+                            </h2>
+                            <p className="text-gray-500 mt-1">
+                                Years Experience
+                            </p>
                         </div>
 
                         <div>
-                            <h2 className="text-3xl font-bold text-[#D4AF37]">100%</h2>
-                            <p className="text-gray-400 mt-1">Secure Products</p>
+                            <h2 className="text-3xl font-bold text-[#D4AF37]">
+                                100%
+                            </h2>
+                            <p className="text-gray-500 mt-1">
+                                Secure Products
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 {/* Right Image */}
                 <div className="relative flex justify-center">
-                    <div className="absolute w-[350px] h-[350px] bg-[#D4AF37]/20 blur-3xl rounded-full"></div>
+                    <div className="relative overflow-hidden rounded-3xl group">
 
-                    <img
-                        src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop"
-                        alt="Titanium Safe"
-                        className="relative z-10 w-full max-w-lg rounded-3xl border border-[#D4AF37]/30 shadow-2xl object-cover"
-                    />
+                        {/* Skeleton Loader */}
+                        {!loaded && (
+                            <div className="absolute inset-0 rounded-3xl bg-gray-200 animate-pulse z-0" />
+                        )}
+
+                        <img
+                            src={about}
+                            alt="Titanium Safe"
+                            loading="lazy"
+                            onLoad={() => setLoaded(true)}
+                            className={`relative z-10 w-full max-w-lg rounded-3xl border border-[#D4AF37]/30 shadow-2xl object-cover transition-all duration-1000 group-hover:scale-105 ${loaded
+                                ? "blur-0 opacity-100 scale-100"
+                                : "blur-2xl opacity-0 scale-110"
+                                }`}
+                        />
+
+                        {/* Premium Glow */}
+                        <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-72 h-20 bg-[#D4AF37]/20 blur-3xl rounded-full" />
+                    </div>
                 </div>
+
             </div>
         </section>
     );
