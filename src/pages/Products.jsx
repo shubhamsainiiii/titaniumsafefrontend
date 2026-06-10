@@ -43,6 +43,8 @@ const Products = () => {
             const { data } = await api.get("/products/all");
             setProducts(data.products.filter((p) => p.available));
         } catch (error) {
+            console.log("FULL ERROR:", error);
+            console.log("RESPONSE:", error.response?.data);
             console.log(error);
         } finally {
             setLoading(false);
