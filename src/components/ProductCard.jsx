@@ -6,12 +6,19 @@ import { FaStar, FaWhatsapp, FaRegStar } from "react-icons/fa";
 const ProductCard = ({ product }) => {
 
     const whatsappBuyNow = () => {
-        const message = `I want to buy this product: ${product?.name}. Please share complete details.`;
-        window.open(
-            `https://wa.me/917727922769?text=${encodeURIComponent(message)}`,
-            "_blank"
-        );
+        const productLink = window.location.href;
+        const msg = `I want to buy this product: ${product.name}.\n\nProduct Link: ${productLink}\n\nPlease share complete details.`;
+        window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
     };
+
+
+    // const whatsappBuyNow = () => {
+    //     const message = `I want to buy this product: ${product?.name}. Please share complete details.`;
+    //     window.open(
+    //         `https://wa.me/917727922769?text=${encodeURIComponent(message)}`,
+    //         "_blank"
+    //     );
+    // };
 
     const avg = product?.averageRating || 0;
 
