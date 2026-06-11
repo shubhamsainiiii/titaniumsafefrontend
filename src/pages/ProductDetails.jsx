@@ -16,6 +16,9 @@ import "swiper/css";
 import ReviewCard from "../components/ReviewCard";
 import ReviewForm from "../components/ReviewForm";
 import api from "../services/api";
+import { LazyLoadImage, } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 
 const Stars = ({ rating, size = "text-sm" }) =>
     [1, 2, 3, 4, 5].map((s) => {
@@ -416,5 +419,4 @@ const ProductDetails = () => {
         </div>
     );
 };
-
 export default ProductDetails;

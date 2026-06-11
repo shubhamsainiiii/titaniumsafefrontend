@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaStar, FaWhatsapp, FaRegStar } from "react-icons/fa";
+import { LazyLoadImage, } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ProductCard = ({ product }) => {
 
@@ -18,9 +20,14 @@ const ProductCard = ({ product }) => {
 
             {/* Image */}
             <div className="relative overflow-hidden h-[200px] bg-[#f8f6f0]">
-                <img
+                <LazyLoadImage
                     src={product?.images?.[0]}
                     alt={product?.name}
+                    effect="blur"
+                    wrapperProps={{
+                        style: { transitionDelay: "2s" },
+                    }}
+                    viewport={{ once: false }}
                     className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                 />
 
@@ -55,11 +62,6 @@ const ProductCard = ({ product }) => {
                 <h2 className="text-[#0f1623] font-bold text-sm mb-1.5 truncate">
                     {product?.name}
                 </h2>
-
-                {/* Description */}
-                {/* <p className="text-[#9ca3af] text-xs leading-relaxed mb-4 line-clamp-2">
-                    {product?.description}
-                </p> */}
 
                 {/* Stars */}
                 <div className="flex items-center gap-0.5 mb-4">
