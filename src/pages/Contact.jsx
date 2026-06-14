@@ -26,15 +26,15 @@ const contactItems = [
     {
         icon: FaPhoneAlt,
         label: "Phone Number",
-        value: "+91 9999999999",
+        value: "+91 7727922769",
         href: "tel:+917727922769",
         color: "bg-blue-50 border-blue-100 text-blue-500",
     },
     {
         icon: FaEnvelope,
         label: "Email Address",
-        value: "support@titaniumsafe.com",
-        href: "mailto:support@titaniumsafe.com",
+        value: "titaniumsafee@gmail.com",
+        href: "mailto:titaniumsafee@gmail.com",
         color: "bg-purple-50 border-purple-100 text-purple-500",
     },
     {

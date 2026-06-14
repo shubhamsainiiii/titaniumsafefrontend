@@ -9,6 +9,9 @@ import {
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
+import home1 from "../assets/home1.png";
+import home2 from "../assets/home2.png";
+import home3 from "../assets/home3.png";
 
 const ProductCategories = () => {
 
@@ -21,7 +24,7 @@ const ProductCategories = () => {
             desc: "Premium home security safes for valuables and important documents.",
 
             image:
-                "https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=1200&auto=format&fit=crop",
+                home1,
         },
 
         {
@@ -32,7 +35,7 @@ const ProductCategories = () => {
             desc: "Modern office vaults with advanced locking technology.",
 
             image:
-                "https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1200&auto=format&fit=crop",
+                home2,
         },
 
         {
@@ -43,7 +46,7 @@ const ProductCategories = () => {
             desc: "Heavy-duty safes designed for jewelry businesses and luxury assets.",
 
             image:
-                "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop",
+                home3,
         },
     ];
 
@@ -105,14 +108,14 @@ const ProductCategories = () => {
                             whileHover={{
                                 y: -10,
                             }}
-                            className="group relative h-[480px] rounded-[32px] overflow-hidden border border-[#D4AF37]/10"
+                            className="group relative h-120 rounded-[32px] bg-gradient-to-br from-[#B7BAC2] via-[#646771] to-[#171F32] overflow-hidden border border-[#D4AF37]/10"
                         >
 
                             {/* Background Image */}
                             <img
                                 src={item.image}
                                 alt={item.title}
-                                className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                                className="w-3/4 h-3/4 object-contain mx-auto group-hover:scale-105 transition-all duration-700"
                             />
 
                             {/* Overlay */}

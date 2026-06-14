@@ -31,8 +31,8 @@ const Footer = () => {
 
     const contactInfo = [
         { icon: FaMapMarkerAlt, text: "Jaipur, Rajasthan, India" },
-        { icon: FaPhoneAlt, text: "+91 9999999999" },
-        { icon: FaEnvelope, text: "support@titaniumsafe.com" },
+        { icon: FaPhoneAlt, text: "+91 7727922769" },
+        { icon: FaEnvelope, text: "titaniumsafee@gmail.com" },
     ];
 
     return (
@@ -75,9 +75,11 @@ const Footer = () => {
 
                         <div className="flex items-center gap-3">
                             {[
-                                { icon: FaFacebookF, href: "#" },
-                                { icon: FaInstagram, href: "#" },
+                                { icon: FaEnvelope, href: "mailto:titaniumsafee@gmail.com" },
+                                { icon: FaPhoneAlt, href: "tel:917727922769" },
                                 { icon: FaWhatsapp, href: "https://wa.me/917727922769" },
+                                { icon: FaInstagram, href: "https://www.instagram.com/titaniumsafee" },
+                                { icon: FaFacebookF, href: "#" },
                             ].map(({ icon: Icon, href }, i) => (
                                 <a
                                     key={i}
@@ -164,7 +166,7 @@ const Footer = () => {
                     </p>
                     <p className="text-[#9ca3af] text-xs text-center">
                         Designed & Developed with{" "}
-                        <span className="text-[#D4AF37]">❤️</span>
+                        <span className="text-[#D4AF37]">SHARK</span>
                     </p>
                 </div>
             </div>
