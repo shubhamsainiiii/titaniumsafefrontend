@@ -31,7 +31,7 @@ const Footer = () => {
 
     const contactInfo = [
         { icon: FaMapMarkerAlt, text: "Jaipur, Rajasthan, India" },
-        { icon: FaPhoneAlt, text: "+91 7727922769" },
+        { icon: FaPhoneAlt, text: "+91 9928483035,9929231646" },
         { icon: FaEnvelope, text: "titaniumsafee@gmail.com" },
     ];
 
