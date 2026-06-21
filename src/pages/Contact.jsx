@@ -26,7 +26,7 @@ const contactItems = [
     {
         icon: FaPhoneAlt,
         label: "Phone Number",
-        value: "+91 7727922769",
+        value: "+91 9929231646",
         href: "tel:+919929231646",
         color: "bg-blue-50 border-blue-100 text-blue-500",
     },
