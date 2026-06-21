@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
     const whatsappBuyNow = () => {
         const productLink = window.location.href;
         const msg = `I want to buy this product: ${product.name}.\n\nProduct Link: ${productLink}\n\nPlease share complete details.`;
-        window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
+        window.open(`https://wa.me/919929231646?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
     const avg = product?.averageRating || 0;
@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
                     alt={product?.name}
                     effect="blur"
                     wrapperProps={{
-                        style: { transitionDelay: "2s" },
+                        style: { transitionDelay: "1s" },
                     }}
                     viewport={{ once: false }}
                     className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"

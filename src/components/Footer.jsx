@@ -76,8 +76,8 @@ const Footer = () => {
                         <div className="flex items-center gap-3">
                             {[
                                 { icon: FaEnvelope, href: "mailto:titaniumsafee@gmail.com" },
-                                { icon: FaPhoneAlt, href: "tel:917727922769" },
-                                { icon: FaWhatsapp, href: "https://wa.me/917727922769" },
+                                { icon: FaPhoneAlt, href: "tel:919929231646" },
+                                { icon: FaWhatsapp, href: "https://wa.me/919929231646" },
                                 { icon: FaInstagram, href: "https://www.instagram.com/titaniumsafee" },
                                 { icon: FaFacebookF, href: "#" },
                             ].map(({ icon: Icon, href }, i) => (

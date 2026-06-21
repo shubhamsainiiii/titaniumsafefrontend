@@ -210,13 +210,13 @@ const ProductDetails = () => {
     const handleBuyNow = () => {
         const productLink = window.location.href;
         const msg = `I want to buy this product: ${product.name}.\n\nProduct Link: ${productLink}\n\nPlease share complete details.`;
-        window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
+        window.open(`https://wa.me/919929231646?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
     const handleKnowMore = () => {
         const productLink = window.location.href;
         const msg = `I want to know more about this product: ${product.name}.\n\nProduct Link: ${productLink}\n\nPlease share complete details.`;
-        window.open(`https://wa.me/917727922769?text=${encodeURIComponent(msg)}`, "_blank");
+        window.open(`https://wa.me/919929231646?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
     // Open full image in new tab
