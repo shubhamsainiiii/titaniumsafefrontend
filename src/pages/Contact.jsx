@@ -71,7 +71,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="bg-[#f8f6f0] text-[#0f1623] min-h-screen pt-10">
+        <div className="bg-[#f8f6f0] text-[#0f1623] min-h-screen pt-10 overflow-x-hidden">
             {/* ── Hero ── */}
             <section className="max-w-7xl mx-auto px-5 lg:px-10 py-16">
                 {/* Heading */}
@@ -92,7 +92,7 @@ const Contact = () => {
                 <div className="grid lg:grid-cols-2 gap-10 items-start">
 
                     {/* ── Left: Contact Info ── */}
-                    <div>
+                    <div className="min-w-0">
                         <h2 className="text-2xl font-bold text-[#0f1623] mb-6">
                             Reach Out To Us
                         </h2>
@@ -101,7 +101,7 @@ const Contact = () => {
                             {contactItems.map(({ icon: Icon, label, value, href, color }) => (
                                 <div
                                     key={label}
-                                    className="bg-white border border-[#e8e2d6] rounded-2xl p-5 flex items-center gap-4 hover:border-[#D4AF37]/40 hover:shadow-md transition-all duration-300 group"
+                                    className="bg-white border border-[#e8e2d6] rounded-2xl p-5 flex items-center gap-4 hover:border-[#D4AF37]/40 hover:shadow-md transition-all duration-300 group min-w-0"
                                 >
                                     <div className={`w-11 h-11 rounded-xl border flex items-center justify-center flex-shrink-0 ${color}`}>
                                         <Icon className="text-lg" />
@@ -115,12 +115,12 @@ const Contact = () => {
                                                 href={href}
                                                 target={href.startsWith("https") ? "_blank" : undefined}
                                                 rel="noopener noreferrer"
-                                                className="text-[#0f1623] text-sm font-medium hover:text-[#B8941F] transition-colors duration-200 truncate block"
+                                                className="text-[#0f1623] text-sm font-medium hover:text-[#B8941F] transition-colors duration-200 break-words block"
                                             >
                                                 {value}
                                             </a>
                                         ) : (
-                                            <p className="text-[#0f1623] text-sm font-medium truncate">{value}</p>
+                                            <p className="text-[#0f1623] text-sm font-medium break-words">{value}</p>
                                         )}
                                     </div>
                                     {href && (
@@ -132,7 +132,7 @@ const Contact = () => {
                     </div>
 
                     {/* ── Right: Form ── */}
-                    <div className="bg-white border border-[#e8e2d6] rounded-3xl p-8 shadow-xl shadow-[#D4AF37]/5">
+                    <div className="bg-white border border-[#e8e2d6] rounded-3xl p-8 shadow-xl shadow-[#D4AF37]/5 min-w-0">
 
                         {/* Form header */}
                         <div className="mb-7">
@@ -146,7 +146,7 @@ const Contact = () => {
 
                             {/* Name + Phone row */}
                             <div className="grid sm:grid-cols-2 gap-4">
-                                <div>
+                                <div className="min-w-0">
                                     <label className={labelClass}>Full Name</label>
                                     <input
                                         type="text"
@@ -158,10 +158,12 @@ const Contact = () => {
                                         className={inputClass}
                                     />
                                 </div>
-                                <div>
+                                <div className="min-w-0">
                                     <label className={labelClass}>Phone</label>
                                     <input
-                                        type="number"
+                                        type="tel"
+                                        inputMode="numeric"
+                                        pattern="[0-9]*"
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
@@ -173,7 +175,7 @@ const Contact = () => {
                             </div>
 
                             {/* Email */}
-                            <div>
+                            <div className="min-w-0">
                                 <label className={labelClass}>Email Address</label>
                                 <input
                                     type="email"
@@ -187,7 +189,7 @@ const Contact = () => {
                             </div>
 
                             {/* Message */}
-                            <div>
+                            <div className="min-w-0">
                                 <label className={labelClass}>Your Message</label>
                                 <textarea
                                     rows="5"
