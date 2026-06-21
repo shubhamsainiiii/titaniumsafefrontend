@@ -19,7 +19,7 @@ const contactItems = [
     {
         icon: FaMapMarkerAlt,
         label: "Office Address",
-        value: "Jaipur, Rajasthan, India",
+        value: "Near Railway Station Kanwat, Sikar, Rajasthan, India, 332708",
         href: null,
         color: "bg-orange-50 border-orange-100 text-orange-500",
     },
