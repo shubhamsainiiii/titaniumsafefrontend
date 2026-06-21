@@ -166,7 +166,14 @@ const Footer = () => {
                     </p>
                     <p className="text-[#9ca3af] text-xs text-center">
                         Designed & Developed with{" "}
-                        <span className="text-[#D4AF37]">SHARK</span>
+                        <a
+                            href="https://shark-technologies.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#D4AF37] font-semibold hover:text-[#c19812] transition-all duration-300"
+                        >
+                            SHARK
+                        </a>
                     </p>
                 </div>
             </div>
