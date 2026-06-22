@@ -31,7 +31,7 @@ const Footer = () => {
 
     const contactInfo = [
         { icon: FaMapMarkerAlt, text: "Near Railway Station Kanwat, Sikar, Rajasthan, India, 332708" },
-        { icon: FaPhoneAlt, text: "+91 9928483035,9929231646" },
+        { icon: FaPhoneAlt, text: "+91 9928483035 , 9929231646" },
         { icon: FaEnvelope, text: "titaniumsafee@gmail.com" },
     ];
 
