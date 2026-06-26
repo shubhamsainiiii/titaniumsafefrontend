@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
     FaStar, FaWhatsapp, FaShieldAlt,
-    FaRegStar, FaStarHalfAlt, FaExpand,
+    FaRegStar, FaStarHalfAlt, FaExpand, FaShoppingCart,
+    FaExternalLinkAlt,
 } from "react-icons/fa";
 import {
     FaChevronLeft,
@@ -219,6 +220,19 @@ const ProductDetails = () => {
         window.open(`https://wa.me/919929231646?text=${encodeURIComponent(msg)}`, "_blank");
     };
 
+    const handleAmazon = () => {
+        if (product?.amazonLink) {
+            window.open(product.amazonLink, "_blank");
+        }
+    };
+
+    const handleFlipkart = () => {
+        if (product?.flipkartLink) {
+            window.open(product.flipkartLink, "_blank");
+        }
+    };
+
+
     // Open full image in new tab
     const openImageInNewTab = () => { if (selectedImage) window.open(selectedImage, "_blank"); };
 
@@ -357,7 +371,7 @@ const ProductDetails = () => {
 
                         <div className="h-px bg-[#e8e2d6] my-7" />
 
-                        <div className="flex flex-col sm:flex-row gap-3">
+                        {/* <div className="flex flex-col sm:flex-row gap-3">
                             <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={handleBuyNow}
                                 className="flex-1 bg-[#D4AF37] text-[#0f1623] py-4 rounded-2xl font-bold flex items-center justify-center gap-2.5 text-sm cursor-pointer hover:brightness-105 hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all duration-300">
                                 <FaWhatsapp className="text-base" />Buy Now
@@ -366,6 +380,66 @@ const ProductDetails = () => {
                                 className="flex-1 bg-white border border-[#e8e2d6] text-[#4a5568] py-4 rounded-2xl font-semibold hover:border-[#D4AF37]/40 hover:text-[#B8941F] transition-all duration-300 text-sm cursor-pointer">
                                 Know More
                             </motion.button>
+                        </div> */}
+
+                        <div className="flex flex-col gap-3">
+
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    onClick={handleBuyNow}
+                                    className="flex-1 bg-[#D4AF37] text-[#0f1623] py-4 rounded-2xl font-bold flex items-center justify-center gap-2.5 text-sm cursor-pointer hover:brightness-105 hover:shadow-lg hover:shadow-[#D4AF37]/25 transition-all duration-300"
+                                >
+                                    <FaWhatsapp />
+                                    Buy Now
+                                </motion.button>
+
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    onClick={handleKnowMore}
+                                    className="flex-1 bg-white border border-[#e8e2d6] text-[#4a5568] py-4 rounded-2xl font-semibold hover:border-[#D4AF37]/40 hover:text-[#B8941F] transition-all duration-300 text-sm cursor-pointer"
+                                >
+                                    Know More
+                                </motion.button>
+                            </div>
+
+                            {(product.amazonLink || product.flipkartLink) && (
+                                <div className="grid sm:grid-cols-2 gap-3">
+
+                                    {product.amazonLink && (
+                                        <motion.a
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            href={product.amazonLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="bg-[#232F3E] text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 hover:bg-[#131A22] transition-all duration-300"
+                                        >
+                                            <FaShoppingCart />
+                                            Buy on Amazon
+                                            <FaExternalLinkAlt className="text-xs" />
+                                        </motion.a>
+                                    )}
+
+                                    {product.flipkartLink && (
+                                        <motion.a
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            href={product.flipkartLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="bg-[#2874F0] text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 hover:bg-[#1c5fd1] transition-all duration-300"
+                                        >
+                                            <FaShoppingCart />
+                                            Buy on Flipkart
+                                            <FaExternalLinkAlt className="text-xs" />
+                                        </motion.a>
+                                    )}
+
+                                </div>
+                            )}
                         </div>
 
                         <div className="flex flex-wrap items-center gap-5 mt-6">
