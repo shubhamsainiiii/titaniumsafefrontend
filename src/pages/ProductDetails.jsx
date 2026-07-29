@@ -235,8 +235,6 @@ const ProductDetails = () => {
         }
     };
 
-
-    // Open full image in new tab
     const openImageInNewTab = () => { if (selectedImage) window.open(selectedImage, "_blank"); };
 
     if (loading) return <Skeleton />;
@@ -255,8 +253,9 @@ const ProductDetails = () => {
         { label: "Material", value: product.material },
         { label: "Colour", value: product.colour },
         { label: "Lock System", value: product.closureType },
-        { label: "Dimensions", value: product.productDimensions },
+        { label: "Weight", value: product.weight },
         { label: "Storage", value: product.waterResistanceLevel },
+        { label: "Dimensions", value: product.productDimensions },
     ].filter((s) => s.value);
 
     return (
@@ -417,8 +416,15 @@ const ProductDetails = () => {
 
                         {specs.length > 0 && (
                             <div className="mt-6 grid grid-cols-2 gap-2.5">
-                                {specs.map((s) => <SpecTile key={s.label} {...s} />)}
-                                <SpecialFeatures value={product.specialFeature} />
+                                {specs.map((s, i) => {
+                                    const isLastOdd = i === specs.length - 1 && specs.length % 2 !== 0;
+                                    return (
+                                        <div key={s.label} className={isLastOdd ? "col-span-2" : ""}>
+                                            <SpecTile {...s} />
+                                        </div>
+                                    );
+                                })}
+                                {product.specialFeature && <SpecialFeatures value={product.specialFeature} />}
                             </div>
                         )}
 
